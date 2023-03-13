@@ -16,11 +16,12 @@ async function getMainPage(req, res, next) {
   const lastLiked = likes[0].date.toLocaleDateString("ko-KR", {
     weekday: "long",
     day: "numeric",
-    month: "short",
+    month: "long",
     year: "numeric",
-    hour: "numeric",
-    minute: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
   });
+  likes[0].date = likes[0].date.toISOString();
 
   res.render("main", { numberOfLikes: likes.length, lastLikedDate: lastLiked });
 }
