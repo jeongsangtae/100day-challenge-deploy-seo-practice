@@ -1,4 +1,4 @@
-const Like = require('../models/like.model');
+const Like = require("../models/like.model");
 
 async function getMainPage(req, res, next) {
   let likes;
@@ -10,19 +10,19 @@ async function getMainPage(req, res, next) {
   }
 
   if (likes.length === 0) {
-    return res.render('main', { numberOfLikes: 0, lastLikedDate: null });
+    return res.render("main", { numberOfLikes: 0, lastLikedDate: null });
   }
 
-  const lastLiked = likes[0].date.toLocaleDateString('en-US', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric'
+  const lastLiked = likes[0].date.toLocaleDateString("ko-KR", {
+    weekday: "long",
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
   });
 
-  res.render('main', { numberOfLikes: likes.length, lastLikedDate: lastLiked });
+  res.render("main", { numberOfLikes: likes.length, lastLikedDate: lastLiked });
 }
 
 async function addLike(req, res, next) {
@@ -34,7 +34,7 @@ async function addLike(req, res, next) {
     return next(error);
   }
 
-  res.redirect('/');
+  res.redirect("/");
 }
 
 module.exports = {
